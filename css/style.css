@@ -200,9 +200,6 @@ a:hover {
     color: #333;
     border: 1px solid #eee;
 }
-.text-box .comment:focus{
-     height: 60px;
-}
 .text-box .btn {
     display: none;
     float: right;
@@ -229,7 +226,7 @@ a:hover {
 }
 
 .text-box-on .comment {
-    height: 50px;
+    height: 60px;
     color: #333;
 }
 

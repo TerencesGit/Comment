@@ -43,5 +43,14 @@ window.onload = function(){
 					break;	
 			}
 		}
+		var textarea = lis[i].getElementsByTagName('textarea')[0];
+				textarea.onfocus = function(){
+					this.parentNode.className = 'text-box text-box-on';
+				}
+				textarea.onblur = function(){
+					if(this.value == ''){
+						this.parentNode.className = 'text-box';
+					}
+				}
 	}
 }
