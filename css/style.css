@@ -193,12 +193,13 @@ a:hover {
 
 .text-box .comment {
     display: block;
-    height: 30px;
     width: 428px;
+    height: 15px;
     padding: 5px;
-    resize: vertical;
+    resize: none;
     color: #333;
     border: 1px solid #eee;
+    transition: all .1s
 }
 .text-box .btn {
     display: none;
@@ -207,15 +208,16 @@ a:hover {
     height: 25px;
     font-size: 12px;
     font-weight: bold;
-    color: #fff;
-    border: 1px solid #0C528D;
-    background: #4679AC;
-}
-
-.text-box .btn-off {
     border: 1px solid #ccc;
     color: #ccc;
     background: #F7F7F7;
+    cursor: pointer
+}
+
+.text-box .btn-on {
+    color: #fff;
+    border: 1px solid #0C528D;
+    background: #4679AC;
 }
 
 .text-box .word {

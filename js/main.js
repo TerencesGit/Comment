@@ -52,5 +52,19 @@ window.onload = function(){
 						this.parentNode.className = 'text-box';
 					}
 				}
+				textarea.onkeyup = function(){
+					var len = this.value.length;
+					var textbox = this.parentNode;
+					var btn = textbox.children[1];
+					var word = textbox.children[2];
+					if(len == 0 || len > 140){
+						btn.className = 'btn';
+						btn.setAttribute('disabled',true)
+					}else{
+						btn.className = 'btn btn-on'
+						btn.removeAttribute('disabled')
+					}
+					word.innerHTML = len +'/140'
+				}
 	}
 }
