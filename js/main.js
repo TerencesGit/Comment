@@ -30,8 +30,23 @@ window.onload = function(){
 		praiseEle.style.display = (newTotal == 0) 
 		? 'none' : 'block';
 	}
-	function getTime(){
-		var date = new Date()
+	Date.prototype.format = function(format){
+		var o = {
+			'M+': this.getMonth()+1,
+			'd+': this.getDate(),
+			'h+': this.getHours(),
+			'm+': this.getMinutes(),
+			's+': this.getSeconds()
+		}
+		if(/(y+)/.test(format)){
+			format = format.replace(RegExp.$1,(this.getFullYear()+'').substr(4-RegExp.$1.length));
+		}
+		for(var k in o){
+			if(new RegExp('('+ k +')').test(format)){
+				format = format.replace(RegExp.$1,(RegExp.$1.length == 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)))
+			}
+		}
+		return format;
 	}
 	function release(box, el){
 		var textarea = box.getElementsByTagName('textarea')[0];
@@ -43,7 +58,7 @@ window.onload = function(){
 	              '<div class="comment-content">'+
 	                  '<p class="comment-text"><span class="user">我：</span>'+textarea.value+'</p>'+
 	                  '<p class="comment-time">'+
-	                      '2014-02-19 14:36'+
+	                      ''+ new Date().format('yyyy-MM-dd hh:mm:ss') +''+
 	                      '<a href="javascript:;" class="comment-praise" total="0" my="0" style="">赞</a>'+
 	                      '<a href="javascript:;" class="comment-operate">删除</a>'+
 	                  '</p>'+
