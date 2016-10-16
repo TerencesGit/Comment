@@ -30,6 +30,30 @@ window.onload = function(){
 		praiseEle.style.display = (newTotal == 0) 
 		? 'none' : 'block';
 	}
+	function getTime(){
+		var date = new Date()
+	}
+	function release(box, el){
+		var textarea = box.getElementsByTagName('textarea')[0];
+		var contentList = box.getElementsByClassName('comment-list')[0];
+		var contentBox = document.createElement('div');
+		contentBox.className = 'comment-box clearfix';
+		contentBox.setAttribute('user','self');
+		var html = '<img class="myhead" src="images/my.jpg" alt="" />'+
+	              '<div class="comment-content">'+
+	                  '<p class="comment-text"><span class="user">我：</span>'+textarea.value+'</p>'+
+	                  '<p class="comment-time">'+
+	                      '2014-02-19 14:36'+
+	                      '<a href="javascript:;" class="comment-praise" total="0" my="0" style="">赞</a>'+
+	                      '<a href="javascript:;" class="comment-operate">删除</a>'+
+	                  '</p>'+
+	              '</div>' 
+	   contentBox.innerHTML = html;
+	   contentList.appendChild(contentBox); 
+	   textarea.value = '';
+	   textarea.onkeyup()
+	   el.parentNode.className = 'text-box';          
+	}
 	for(var i = 0; i < lis.length;i++){
 		lis[i].onclick = function(e){
 			e = e || window.event;
@@ -41,6 +65,9 @@ window.onload = function(){
 				case 'praise':
 					praise(el.parentNode.parentNode.parentNode, el)
 					break;	
+				case 'btn btn-on':
+					release(el.parentNode.parentNode.parentNode, el);
+					break;
 			}
 		}
 		var textarea = lis[i].getElementsByTagName('textarea')[0];
