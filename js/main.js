@@ -69,6 +69,23 @@ window.onload = function(){
 	   textarea.onkeyup()
 	   el.parentNode.className = 'text-box';          
 	}
+	function commentPraise(el){
+		var total = el.getAttribute('total')*1;
+		var my = el.getAttribute('my')*1;
+		var newTotal;
+		if(my == 0){
+			newTotal = total + 1;
+			el.setAttribute('total',newTotal);
+			el.setAttribute('my',1);
+			el.innerHTML = newTotal + '取消赞';
+		}else{
+			newTotal = total - 1;
+			el.setAttribute('total',newTotal);
+			el.setAttribute('my',0);
+			el.innerHTML = newTotal == 0 ? '赞' : newTotal + '赞';
+		}
+		el.style.display = newTotal==0 ? '' : 'inline-block'
+	}
 	for(var i = 0; i < lis.length;i++){
 		lis[i].onclick = function(e){
 			e = e || window.event;
@@ -82,6 +99,9 @@ window.onload = function(){
 					break;	
 				case 'btn btn-on':
 					release(el.parentNode.parentNode.parentNode, el);
+					break;
+				case 'comment-praise':
+					commentPraise(el)
 					break;
 			}
 		}
