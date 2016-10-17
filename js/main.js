@@ -86,6 +86,23 @@ window.onload = function(){
 		}
 		el.style.display = newTotal==0 ? '' : 'inline-block'
 	}
+	function commentOperte(el){
+		var commentBox = el.parentNode.parentNode.parentNode;
+		var box = commentBox.parentNode.parentNode.parentNode;
+		var textarea = box.getElementsByTagName('textarea')[0];
+		var user = commentBox.getElementsByClassName('user')[0];
+		var txt = el.innerHTML;
+		console.log(txt)
+		if(txt == '回复'){
+			textarea.onfocus()
+			textarea.value = '回复'+user.innerHTML;
+			textarea.onkeyup()
+		}else if(txt == '删除'){
+			removeNode(commentBox)
+		}else{
+			return false;
+		}
+	}
 	for(var i = 0; i < lis.length;i++){
 		lis[i].onclick = function(e){
 			e = e || window.event;
@@ -104,7 +121,7 @@ window.onload = function(){
 					commentPraise(el)
 					break;
 				case 'comment-operate':
-					removeNode(el.parentNode.parentNode.parentNode)
+					commentOperte(el);
 					break;
 			}
 		}
