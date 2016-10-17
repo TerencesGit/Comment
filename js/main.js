@@ -103,6 +103,9 @@ window.onload = function(){
 				case 'comment-praise':
 					commentPraise(el)
 					break;
+				case 'comment-operate':
+					removeNode(el.parentNode.parentNode.parentNode)
+					break;
 			}
 		}
 		var textarea = lis[i].getElementsByTagName('textarea')[0];
